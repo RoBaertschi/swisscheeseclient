@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import robaertschi.swisscheeseclient.gui.ClientModulesScreen;
 
 @Mixin(TitleScreen.class)
 public abstract class TitleScreenMixin extends Screen {
@@ -31,7 +32,10 @@ public abstract class TitleScreenMixin extends Screen {
 				new Identifier("swisscheeseclient", "textures/config_button.png"),
 				32,
 				64,
-				buttonWidget -> {/* Set Config Screen*/},
+				buttonWidget -> {
+					assert client != null;
+					client.setScreen(new ClientModulesScreen());
+				},
 				Text.literal("Swiss Cheese Client Config")
 		));
 	}

@@ -61,6 +61,9 @@ dependencies {
 	modImplementation libs.quilted.fabric.api
 	// modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
 	modImplementation libs.owo.lib
+	annotationProcessor libs.owo.lib
+
+	include libs.owo.lib
 
 	testmodImplementation sourceSets.main.output
 }

@@ -1,11 +1,15 @@
 package robaertschi.swisscheeseclient.module;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.FlowLayout;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import robaertschi.swisscheeseclient.SwissCheeseClient;
 
@@ -92,6 +96,10 @@ public class ModuleRegistry {
 				renderModuleButton(rootComponent, activatable);
 			}
 		}
+
+		if (registeredItems.size() == 0) {
+			rootComponent.child(Components.label(Text.literal("No Modules found. Download some from the Internet. ;-)")));
+		}
 	}
 
 	private static void renderModuleButton(@NotNull FlowLayout rootComponent, @NotNull Activatable activatable) {
@@ -119,6 +127,22 @@ public class ModuleRegistry {
 				y += 10;
 			}
 		}
+
+		int x = 0;
+		MinecraftClient client = MinecraftClient.getInstance();
+		if (client != null) {
+			int width = client.getWindow().getScaledWidth();
+			int height = client.getWindow().getScaledHeight();
+
+			x = width / 2;
+		}
+
+		RenderSystem.setShader(GameRenderer::getPositionTexShader);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderTexture(0, new Identifier("swisscheeseclient", "textures/icon.png"));
+		DrawableHelper.drawTexture(matrixStack,x * 2 - 20, 10,0,0,12,12,
+				12,12);
+
 	}
 
 }
