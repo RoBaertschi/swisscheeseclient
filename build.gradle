@@ -92,9 +92,26 @@ java {
 	withSourcesJar()
 	withJavadocJar()
 
+
+
+
 	// If this mod is going to be a library, then it should also generate Javadocs in order to aid with development.
 	// Uncomment this line to generate them.
 	// withJavadocJar()
+}
+
+task renameArtifacts (type: Copy) {
+	dependsOn(javadocJar)
+
+	from('build/libs')
+	into('build/libs')
+	include '*-javadoc.jar'
+	rename { String filename ->
+		filename = 'javadoc.jar'
+	}
+}
+
+build {
 }
 
 jar {
