@@ -1,0 +1,29 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "robaertschi.swisscheeseclient",
+		"id": "scc_testmod",
+		"version": "1.0.0",
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"load_type": "always",
+		"entrypoints": {
+			"client_init": "robaertschi.swisscheeseclient.test.TestMod",
+			"pre_launch": "robaertschi.swisscheeseclient.test.TestPrelaunch"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.18.0-"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=5.0.0-"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.19.3"
+			},
+			"swisscheeseclient"
+		]
+	}
+}

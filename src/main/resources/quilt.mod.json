@@ -1,40 +1,43 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "com.example",
-		"id": "example_mod",
+		"group": "robaertschi",
+		"id": "swisscheeseclient",
 		"version": "${version}",
 		"metadata": {
-			"name": "Mod Name",
-			"description": "A short description of your mod.",
+			"name": "Swiss Cheese Client",
+			"description": "An Modular Minecraft Client. Primary designed for hack clients.",
 			"contributors": {
-				"Your name here": "Owner"
+				"RoBaertschi": "Owner"
 			},
 			"contact": {
-				"homepage": "https://example.com/",
-				"issues": "https://github.com/QuiltMC/quilt-template-mod/issues",
-				"sources": "https://github.com/QuiltMC/quilt-template-mod"
+				"homepage": "https://robaertschi.github.io",
+				"issues": "https://github.com/RoBaertschi/swisscheeseclient/issues",
+				"sources": "https://github.com/RoBaertschi/swisscheeseclient"
 			},
 			"icon": "assets/example_mod/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.example.example_mod.ExampleMod"
+			"client_init": "robaertschi.swisscheeseclient.SwissCheeseClient"
 		},
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.17.0-"
+				"versions": ">=0.18.0-"
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": ">=4.0.0-"
+				"versions": ">=5.0.0-"
 			},
 			{
 				"id": "minecraft",
-				"versions": ">=1.19.2"
+				"versions": ">=1.19.3"
 			}
 		]
 	},
-	"mixin": "example_mod.mixins.json"
+	"mixin": "swisscheeseclient.mixins.json",
+	"minecraft": {
+		"environment": "client"
+	}
 }
