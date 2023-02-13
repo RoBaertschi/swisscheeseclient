@@ -25,9 +25,9 @@ public class SwissCheeseClient implements ClientModInitializer {
 			LOGGER.info("All Modules disabled.");
 		});
 
-		ClientTickEvents.END.register(client -> ModuleRegistry.getInstance().updateClient());
+		ClientTickEvents.START.register(client -> ModuleRegistry.getInstance().updateClient());
 
-		ClientWorldTickEvents.END.register((client, world) -> ModuleRegistry.getInstance().updateWorld());
+		ClientWorldTickEvents.START.register((client, world) -> ModuleRegistry.getInstance().updateWorld());
 
 		HudRenderCallback.EVENT.register(ModuleRegistry::renderHud);
 	}
